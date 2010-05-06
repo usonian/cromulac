@@ -1,0 +1,6 @@
+Long ago I wrote a PHP script which generated pseudorandom words based on the ubiquitous /usr/share/dict file.  The only markov scripts I'm finding online deal with sentences, not words - or if they deal with words, they rely only on consonant/syllable patterns for password generation.
+
+So, time to reimplement in Python.
+
+-Andy
+http://andychase.net
