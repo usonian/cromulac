@@ -1,6 +1,11 @@
 Long ago I wrote a PHP script which generated pseudorandom words based on the ubiquitous /usr/share/dict file.  The only markov scripts I'm finding online deal with sentences, not words - or if they deal with words, they rely only on consonant/syllable patterns for password generation.
 
-So, time to reimplement in Python.
+So, time to reimplement in Python. I'm sure it could be done much more elegantly, but I am not a hardcore python dev, and this works for my purposes.
+Cleanup may or may not follow.
+
+To use, pipe a text file containing your list of words (one per line) into the script;
+
+  > cat mysourcefile.txt | ./cromulac.py
 
 -Andy
 http://andychase.net
