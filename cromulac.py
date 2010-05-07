@@ -34,9 +34,6 @@ def buildWord(base, wordTable, accuracy):
   else:
     return base
 
-nonword = "\n"
-w1 = nonword
-w2 = nonword
 
 #Generate table
 table = {}
