@@ -6,13 +6,13 @@ import re
 import math
 
 def buildWord(base, wordTable, accuracy):
-  pair = base[-2:]
+  stub = base[-3:]
   #Find the most likely next letter and add it
-  if pair in wordTable.keys():
+  if stub in wordTable.keys():
 
-    nextKeys = wordTable[pair].keys()
+    nextKeys = wordTable[stub].keys()
     #http://desk.stinkpot.org:8080/tricks/index.php/2006/10/find-the-key-for-the-minimum-or-maximum-value-in-a-python-dictionary/
-    nextKeys.sort(cmp=lambda a,b: cmp(table[pair][a],table[pair][b]))
+    nextKeys.sort(cmp=lambda a,b: cmp(table[stub][a],table[stub][b]))
 
     #Chose a random index in the top 80% of those available
     lowerIdx = int(math.floor(len(nextKeys) * (accuracy / 100.0)))
@@ -40,27 +40,32 @@ w2 = nonword
 
 #Generate table
 table = {}
-#Keep a separate list of starting pairs for simplicity
+#Keep a separate list of starting stubs for simplicity
 start = []
 
 for word in sys.stdin:
-  word = word.lower()
+ #word = word.lower()
 
-  for i in range(0, len(word) - 2):
-    pair = word[i:i+2]
-    if i == 0:
-      start.append(pair)
-    if (i == len(word) - 2):
-      character = word[i+1:i+2]
-    else:
-      character = word[i+2:i+3]
-
-    table.setdefault(pair, {})
+  for i in range(0, len(word) - 3):
+    stub = word[i:i+3]
     
-    if table[pair].has_key(character):
-      table[pair][character] = table[pair][character] + 1
+    if (i == 0):
+      try:
+        startExists = start.index(stub)
+      except:
+        start.append(stub)
+    
+    if (i <= (len(word) - 3)):
+      character = word[i+3:i+4]
     else:
-      table[pair][character] = 1
+      character = "\n"
+    
+    table.setdefault(stub, {})
+    
+    if table[stub].has_key(character):
+      table[stub][character] = table[stub][character] + 1
+    else:
+      table[stub][character] = 1
 
 minlength = 5
 wordsplease = 10
@@ -68,9 +73,9 @@ accuracy = float(90)
 
 words = []
 while len(words) < wordsplease:
-  #Pick a random starting pair
-  pair = random.choice(start)
-  word = buildWord(pair, table, accuracy)
+  #Pick a random starting stub
+  stub = random.choice(start)
+  word = buildWord(stub, table, accuracy)
   if (len(word) >= minlength):
     words.append(word)
 
