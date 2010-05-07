@@ -68,8 +68,8 @@ for word in sys.stdin:
       table[stub][character] = 1
 
 minlength = 5
-wordsplease = 10
-accuracy = float(90)
+wordsplease = 100
+accuracy = float(85)
 
 words = []
 while len(words) < wordsplease:
@@ -80,4 +80,4 @@ while len(words) < wordsplease:
     words.append(word)
 
 for word in words:
-  print word
+  print word.rstrip(' \n')
