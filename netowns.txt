@@ -3338,6 +3338,11 @@ Dana
 Prescott
 Greenwich
 Enfield
+Arkham
+Dunwich
+Aylesbury
+Innsmouth
+Kingsport
 Agawam
 Amesbury
 Attleboro
@@ -3392,6 +3397,11 @@ Weymouth
 Winthrop
 Woburn
 Worcester
+Old Furnace
+Wheelwright
+Gilbertsville
+Whitehall
+Waterville
 Abbot
 Acton
 Addison
